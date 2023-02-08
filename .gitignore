@@ -6,8 +6,10 @@
 
 *.xml
 
-*.netbeans_*
+# *.netbeans_*
 
 *.mf
 
 build\classes\icons\*.jpg
+
+**/build

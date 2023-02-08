@@ -103,7 +103,7 @@ public class CheckOut extends JFrame{
                             
                             if(rs.next()){
                                 System.out.println("clicked");
-                                t1.setText(rs.getString("room_number"));    
+                                t1.setText(rs.getString("room"));    
                             }
                         }catch(Exception e){ }
                     }
@@ -130,7 +130,7 @@ public class CheckOut extends JFrame{
                                 String id = c1.getSelectedItem();
                                 String s1 = t1.getText();
 				String deleteSQL = "Delete from customer where number = "+id;
-                                String q2 = "update room set availability = 'Available' where room_number = "+s1;
+                                String q2 = "update room set availability = 'Available' where roomnumber = "+s1;
                                 
                                 
 				conn c = new conn();

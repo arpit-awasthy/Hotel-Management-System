@@ -143,7 +143,7 @@ public class UpdateCheck extends JFrame {
                                 String s4 = txt_Date.getText(); //status;    
                                 String s5 = txt_Time.getText(); //deposit    
 				
-                                c.s.executeUpdate("update customer set room_number = '"+s2+"', name = '"+s3+"', status = '"+s4+"', deposit = '"+s5+"' where number = '"+s1+"'");
+                                c.s.executeUpdate("update customer set roomnumber = '"+s2+"', name = '"+s3+"', status = '"+s4+"', deposit = '"+s5+"' where number = '"+s1+"'");
                                 
                                 JOptionPane.showMessageDialog(null, "Data Updated Successfully");
                                 new Reception().setVisible(true);
@@ -182,7 +182,7 @@ public class UpdateCheck extends JFrame {
                                 ResultSet rs1 = c.s.executeQuery("select * from customer where number = "+s1);
                                 
                                 while(rs1.next()){
-                                    txt_ID.setText(rs1.getString("room_number"));    
+                                    txt_ID.setText(rs1.getString("room"));    
                                     txt_Status.setText(rs1.getString("name"));    
                                     txt_Date.setText(rs1.getString("status"));    
                                     txt_Time.setText(rs1.getString("deposit"));    
@@ -192,7 +192,7 @@ public class UpdateCheck extends JFrame {
                             try{
                                 String total = "";
                                 conn c  = new conn();
-                                ResultSet rs2 = c.s.executeQuery("select * from room where room_number = "+txt_ID.getText());
+                                ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = "+txt_ID.getText());
                                 while(rs2.next()){
                                     total = rs2.getString("price"); 
                                     

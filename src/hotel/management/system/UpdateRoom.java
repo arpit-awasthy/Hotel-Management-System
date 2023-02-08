@@ -119,12 +119,12 @@ PreparedStatement pst = null;
                                 ResultSet rs1 = c.s.executeQuery("select * from customer where number = "+s1);
                                 
                                 while(rs1.next()){
-                                    txt_Room.setText(rs1.getString("room_number"));    
+                                    txt_Room.setText(rs1.getString("room"));    
                                 }
                             }catch(Exception ee){}
                             try{
                                 conn c  = new conn();
-                                ResultSet rs2 = c.s.executeQuery("select * from room where room_number = "+txt_Room.getText());
+                                ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = "+txt_Room.getText());
                                 while(rs2.next()){
                                     txt_Ava.setText(rs2.getString("availability")); 
                                     txt_Status.setText(rs2.getString("clean_status"));
@@ -143,7 +143,7 @@ PreparedStatement pst = null;
 				
 				try{
                                     conn c = new conn();
-                                    String str = "update room set clean_status = '"+txt_Status.getText()+"' where room_number = "+txt_Room.getText();
+                                    String str = "update room set clean_status = '"+txt_Status.getText()+"' where roomnumber = "+txt_Room.getText();
                                     c.s.executeUpdate(str);
                                     JOptionPane.showMessageDialog(null, "Update Sucessful");
                                     
