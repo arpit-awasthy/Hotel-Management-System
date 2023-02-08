@@ -1,0 +1,13 @@
+*.zip
+
+*.class
+
+*.properties
+
+*.xml
+
+*.netbeans_*
+
+*.mf
+
+build\classes\icons\*.jpg
