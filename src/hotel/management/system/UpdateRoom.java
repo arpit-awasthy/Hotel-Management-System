@@ -78,7 +78,7 @@ PreparedStatement pst = null;
                 c1 = new Choice();
                 try{
                     conn c = new conn();
-                    ResultSet rs = c.s.executeQuery("select * from customer");
+                    ResultSet rs = c.s.executeQuery("select * from customer where is_delete = 0");
                     while(rs.next()){
                         c1.add(rs.getString("number"));    
                     }
@@ -116,7 +116,7 @@ PreparedStatement pst = null;
                             try{
                                 String s1 = c1.getSelectedItem();
 				conn c = new conn();
-                                ResultSet rs1 = c.s.executeQuery("select * from customer where number = "+s1);
+                                ResultSet rs1 = c.s.executeQuery("select * from customer where is_delete = 0 and number = "+s1);
                                 
                                 while(rs1.next()){
                                     txt_Room.setText(rs1.getString("room"));    
@@ -127,7 +127,7 @@ PreparedStatement pst = null;
                                 ResultSet rs2 = c.s.executeQuery("select * from room where roomnumber = "+txt_Room.getText());
                                 while(rs2.next()){
                                     txt_Ava.setText(rs2.getString("availability")); 
-                                    txt_Status.setText(rs2.getString("clean_status"));
+                                    txt_Status.setText(rs2.getString("cleaning_status"));
                                 }
                             }catch(Exception ee){}
                         }
@@ -143,7 +143,7 @@ PreparedStatement pst = null;
 				
 				try{
                                     conn c = new conn();
-                                    String str = "update room set clean_status = '"+txt_Status.getText()+"' where roomnumber = "+txt_Room.getText();
+                                    String str = "update room set cleaning_status = '"+txt_Status.getText()+"' where roomnumber = "+txt_Room.getText();
                                     c.s.executeUpdate(str);
                                     JOptionPane.showMessageDialog(null, "Update Sucessful");
                                     
