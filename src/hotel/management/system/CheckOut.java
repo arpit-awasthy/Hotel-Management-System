@@ -78,7 +78,7 @@ public class CheckOut extends JFrame {
         c1 = new Choice();
         try {
             conn c = new conn();
-            ResultSet rs = c.s.executeQuery("select * from customer");
+            ResultSet rs = c.s.executeQuery("select * from customer where is_delete = 0");
             while (rs.next()) {
                 c1.add(rs.getString("number"));
             }

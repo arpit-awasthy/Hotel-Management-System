@@ -77,7 +77,7 @@ public class UpdateCheck extends JFrame {
                 c1 = new Choice();
                 try{
                     conn c = new conn();
-                    ResultSet rs = c.s.executeQuery("select * from customer");
+                    ResultSet rs = c.s.executeQuery("select * from customer where is_delete = 0");
                     while(rs.next()){
                         c1.add(rs.getString("number"));    
                     }
@@ -140,10 +140,10 @@ public class UpdateCheck extends JFrame {
                                 String s1 = c1.getSelectedItem();
 				String s2 = txt_ID.getText(); //room_number;    
                                 String s3 = txt_Status.getText(); //name    
-                                String s4 = txt_Date.getText(); //status;    
+                                String s4 = txt_Date.getText(); //checkintime;    
                                 String s5 = txt_Time.getText(); //deposit    
 				
-                                c.s.executeUpdate("update customer set roomnumber = '"+s2+"', name = '"+s3+"', status = '"+s4+"', deposit = '"+s5+"' where number = '"+s1+"'");
+                                c.s.executeUpdate("update customer set room = '"+s2+"', name = '"+s3+"', checkintime = '"+s4+"', deposit = '"+s5+"' where number = '"+s1+"'");
                                 
                                 JOptionPane.showMessageDialog(null, "Data Updated Successfully");
                                 new Reception().setVisible(true);
@@ -179,12 +179,12 @@ public class UpdateCheck extends JFrame {
                             try{
 				String s1 = c1.getSelectedItem();
 				conn c = new conn();
-                                ResultSet rs1 = c.s.executeQuery("select * from customer where number = "+s1);
+                                ResultSet rs1 = c.s.executeQuery("select * from customer where is_delete = 0 AND number = "+s1);
                                 
                                 while(rs1.next()){
                                     txt_ID.setText(rs1.getString("room"));    
                                     txt_Status.setText(rs1.getString("name"));    
-                                    txt_Date.setText(rs1.getString("status"));    
+                                    txt_Date.setText(rs1.getString("checkintime"));    
                                     txt_Time.setText(rs1.getString("deposit"));    
                                 }
                             }catch(Exception ee){}
