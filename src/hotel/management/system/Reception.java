@@ -210,24 +210,24 @@ public class Reception extends JFrame {
 
 		contentPane.add(btnNewButton_6);
 		
-		JButton btnPickUpSerice = new JButton("Pick up Service");
-		btnPickUpSerice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try{
-				PickUp pick = new PickUp();
-				pick.setVisible(true);
-                                setVisible(false);
-				}
-				catch(Exception e){
-					e.printStackTrace();
-				}
-			}
-		});
-		btnPickUpSerice.setBounds(10, 390, 200, 30);
-                btnPickUpSerice.setBackground(Color.BLACK);
-                btnPickUpSerice.setForeground(Color.WHITE);
-
-		contentPane.add(btnPickUpSerice);
+//		JButton btnPickUpSerice = new JButton("Pick up Service");
+//		btnPickUpSerice.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent arg0) {
+//				try{
+//				PickUp pick = new PickUp();
+//				pick.setVisible(true);
+//                                setVisible(false);
+//				}
+//				catch(Exception e){
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//		btnPickUpSerice.setBounds(10, 390, 200, 30);
+//                btnPickUpSerice.setBackground(Color.BLACK);
+//                btnPickUpSerice.setForeground(Color.WHITE);
+//
+//		contentPane.add(btnPickUpSerice);
 		
 		JButton btnSearchRoom = new JButton("Search Room");
 		btnSearchRoom.addActionListener(new ActionListener() {
@@ -242,7 +242,7 @@ public class Reception extends JFrame {
 				}
 			}
 		});
-		btnSearchRoom.setBounds(10, 430, 200, 30);
+		btnSearchRoom.setBounds(10, 390, 200, 30);
                 btnSearchRoom.setBackground(Color.BLACK);
                 btnSearchRoom.setForeground(Color.WHITE);
 
@@ -261,7 +261,7 @@ public class Reception extends JFrame {
 				
 			}
 		});
-		btnNewButton_7.setBounds(10, 470, 200, 30);
+		btnNewButton_7.setBounds(10, 430, 200, 30);
                 btnNewButton_7.setBackground(Color.BLACK);
                 btnNewButton_7.setForeground(Color.WHITE);
 
