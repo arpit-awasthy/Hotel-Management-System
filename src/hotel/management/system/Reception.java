@@ -210,25 +210,6 @@ public class Reception extends JFrame {
 
 		contentPane.add(btnNewButton_6);
 		
-//		JButton btnPickUpSerice = new JButton("Pick up Service");
-//		btnPickUpSerice.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				try{
-//				PickUp pick = new PickUp();
-//				pick.setVisible(true);
-//                                setVisible(false);
-//				}
-//				catch(Exception e){
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//		btnPickUpSerice.setBounds(10, 390, 200, 30);
-//                btnPickUpSerice.setBackground(Color.BLACK);
-//                btnPickUpSerice.setForeground(Color.WHITE);
-//
-//		contentPane.add(btnPickUpSerice);
-		
 		JButton btnSearchRoom = new JButton("Search Room");
 		btnSearchRoom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -247,6 +228,24 @@ public class Reception extends JFrame {
                 btnSearchRoom.setForeground(Color.WHITE);
 
 		contentPane.add(btnSearchRoom);
+                
+                JButton btnReport = new JButton("Report");
+		btnReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try{
+				Report rprt = new Report();
+				rprt.setVisible(true);
+                                setVisible(false);
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
+		btnReport.setBounds(10, 430, 200, 30);
+                btnReport.setBackground(Color.BLACK);
+                btnReport.setForeground(Color.WHITE);
+		contentPane.add(btnReport);
 
 		JButton btnNewButton_7 = new JButton("Log Out");
 		btnNewButton_7.addActionListener(new ActionListener() {
@@ -261,7 +260,7 @@ public class Reception extends JFrame {
 				
 			}
 		});
-		btnNewButton_7.setBounds(10, 430, 200, 30);
+		btnNewButton_7.setBounds(10, 470, 200, 30);
                 btnNewButton_7.setBackground(Color.BLACK);
                 btnNewButton_7.setForeground(Color.WHITE);
 
