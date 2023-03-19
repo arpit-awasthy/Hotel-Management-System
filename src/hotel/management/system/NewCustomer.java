@@ -5,6 +5,7 @@
  */
 package hotel.management.system;
 
+import static hotel.management.system.Report.sdf;
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.EventQueue;
@@ -17,6 +18,8 @@ import java.sql.*;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class NewCustomer extends JFrame {
 
@@ -27,6 +30,7 @@ public class NewCustomer extends JFrame {
     JComboBox comboBox;
     JRadioButton r1, r2;
     Choice c1;
+    static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     /**
      * Launch the application.
@@ -164,6 +168,8 @@ public class NewCustomer extends JFrame {
 
                 try {
 
+                    Calendar now = Calendar.getInstance();
+                    String InDate = sdf.format(now.getTime());
                     String s1 = (String) comboBox.getSelectedItem();
                     String s2 = t1.getText();
                     String s3 = t2.getText();
@@ -172,7 +178,7 @@ public class NewCustomer extends JFrame {
                     String s7 = t5.getText();
                     String s8 = t6.getText();
 
-                    String q1 = "insert into customer values('" + s1 + "','" + s2 + "','" + s3 + "','" + s4 + "','" + s5 + "','" + s6 + "','" + s7 + "','" + s8 + "',0)";
+                    String q1 = "insert into customer values('" + s1 + "','" + s2 + "','" + s3 + "','" + s4 + "','" + s5 + "','" + s6 + "','" + s7 + "','" + s8 + "',0,'" + InDate + "')";
                     String q2 = "update room set availability = 'Occupied' where roomnumber = " + s6;
                     c.s.executeUpdate(q1);
                     c.s.executeUpdate(q2);
