@@ -77,53 +77,65 @@ public class Report extends JFrame {
 		lblTypeOfCar.setBounds(32, 97, 89, 14);
 		contentPane.add(lblTypeOfCar);
 
-		String course[] = {"1 Week","1 Month","3 Month","6 Month","1 Year","Complete"};
+		String course[] = {"1 Week","1 Month","6 Month","1 Year","Full"};
                 c1 = new JComboBox(course);
                 c1.setBackground(Color.WHITE);
                 c1.setBounds(123, 94, 150, 25);
                 add(c1);
 		
-//		JLabel lblInfo = new JLabel("Name");
-//		lblInfo.setBounds(24, 208, 46, 14);
-//		contentPane.add(lblInfo);
-		
 		JButton btnRegister = new JButton("Display");
 		btnRegister.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+                    public void actionPerformed(ActionEvent arg0) {
+                        
 
-                            
-                Calendar now = Calendar.getInstance();
-                
-                // String endDate = sdf.format(now.getTime());
-                now.set(Calendar.HOUR_OF_DAY, 23);
-                now.set(Calendar.MINUTE, 59);
-                now.set(Calendar.SECOND, 59);
-                String endDate = sdf.format(now.getTime());
-                
-                now.add(Calendar.DAY_OF_MONTH, -7);
-                now.set(Calendar.HOUR_OF_DAY, 0);
-                now.set(Calendar.MINUTE, 0);
-                now.set(Calendar.SECOND, 0);
-                String strtDate = sdf.format(now.getTime());
-                
-                System.out.println(strtDate);
-                System.out.println(endDate);
-              
-				String SQL = "select * from customer where is_delete = 1 AND timeStampCol BETWEEN '" + strtDate + "' AND '" + endDate + "';";
-				try{
-					conn c = new conn();
-					rs = c.s.executeQuery(SQL);
-					table.setModel(DbUtils.resultSetToTableModel(rs));
-					
-					
-					
-				}catch (SQLException ss)
-				{
-					ss.printStackTrace();
-				}
-				
-				
-			}
+                        Calendar now = Calendar.getInstance();
+
+                        // String endDate = sdf.format(now.getTime());
+                        now.set(Calendar.HOUR_OF_DAY, 23);
+                        now.set(Calendar.MINUTE, 59);
+                        now.set(Calendar.SECOND, 59);
+                        String endDate = sdf.format(now.getTime());
+
+                        String filterRangeOpt = (String) c1.getSelectedItem();
+                        
+                        if(filterRangeOpt == null ? course[0] == null : filterRangeOpt.equals(course[0]))    {
+                            now.add(Calendar.DAY_OF_MONTH, -7);
+                        }   else if(filterRangeOpt == null ? course[1] == null : filterRangeOpt.equals(course[1]))    {
+                            now.add(Calendar.MONTH, -1);
+                        }  else if(filterRangeOpt == null ? course[2] == null : filterRangeOpt.equals(course[2]))    {
+                            now.add(Calendar.MONTH, -6);
+                        }  else if(filterRangeOpt == null ? course[3] == null : filterRangeOpt.equals(course[3]))    {
+                            now.add(Calendar.YEAR, -1);
+                        }  else   {
+                            now.add(Calendar.YEAR, -63);
+                        }
+                        
+                        
+                        now.set(Calendar.HOUR_OF_DAY, 0);
+                        now.set(Calendar.MINUTE, 0);
+                        now.set(Calendar.SECOND, 0);
+                        String strtDate = sdf.format(now.getTime());
+
+                        System.out.println(strtDate);
+                        System.out.println(endDate);
+
+                        String SQL = "select * from customer where is_delete = 1 AND timeStampCol BETWEEN '" + strtDate + "' AND '" + endDate + "';";
+                        System.out.println(SQL);
+                        System.out.println("-----------------------------------");
+                        try{
+                                conn c = new conn();
+                                rs = c.s.executeQuery(SQL);
+                                table.setModel(DbUtils.resultSetToTableModel(rs));
+
+
+
+                        }catch (SQLException ss)
+                        {
+                                ss.printStackTrace();
+                        }
+
+
+                    }
 		});
 		btnRegister.setBounds(200, 500, 120, 30);
                 btnRegister.setBackground(Color.BLACK);
